@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 L/backend/node_modules/.yarn-integrity
 L/backend/node_modules/accepts/HISTORY.md
 L/backend/node_modules/accepts/index.js
@@ -564,3 +565,39 @@ L/backend/node_modules/ylru/index.js
 L/backend/node_modules/ylru/LICENSE
 L/backend/node_modules/ylru/package.json
 L/backend/node_modules/ylru/README.md
+=======
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+###
+>>>>>>> 42655ee42234c90d6f318af3131df7744ea3f7f8
