@@ -10,6 +10,7 @@ export const checkObjectId = (ctx, next) => {
     ctx.status = 400;
     return;
   }
+
   return next();
 };
 /*
