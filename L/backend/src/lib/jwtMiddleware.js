@@ -21,7 +21,7 @@ const jwtMiddleware = async (ctx, next) => {
         httpOnly: true,
       });
     }
-    console.log(decoded);
+    //console.log(decoded);
     return next();
   } catch (e) {
     return next();
