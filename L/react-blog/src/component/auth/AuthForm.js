@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import palette from '../../lib/styles/palette';
-import Button from '../common/Button';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import palette from "../../lib/styles/palette";
+import Button from "../common/Button";
 
 /**
  *  회원가입 또는 로그인 폼을 보여줌  */
@@ -54,8 +54,8 @@ const ButtonWithMarginTop = styled(Button)`
 `;
 
 const textMap = {
-  login: '로그인',
-  register: '회원가입',
+  login: "로그인",
+  register: "회원가입"
 };
 
 const AuthForm = ({ type, form, onChange, onSubmit }) => {
@@ -79,11 +79,11 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
           onChange={onChange}
           value={form.password}
         />
-        {type === 'register' && (
+        {type === "register" && (
           <StyledInput
             autoComplete="new-password"
             name="passwordConfirm"
-            placeholder="비밀번호"
+            placeholder="비밀번호 확인"
             type="password"
             onChange={onChange}
             value={form.passwordConfirm}
@@ -94,7 +94,7 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
         </ButtonWithMarginTop>
       </form>
       <Footer>
-        {type === 'login' ? (
+        {type === "login" ? (
           <Link to="/register">회원가입</Link>
         ) : (
           <Link to="/login">로그인</Link>
