@@ -60,6 +60,7 @@ const Footer = styled.div`
 
 const ButtonWithMarginTop = styled(Button)`
   margin-top: 1rem;
+  padding: 0.8rem 0.1rem;
 `;
 
 const textMap = {
