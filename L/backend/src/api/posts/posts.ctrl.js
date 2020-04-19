@@ -17,8 +17,8 @@ export const getPostById = async (ctx, next) => {
       ctx.status = 404;
       return;
     }
-    ctx.state.post;
-    return next;
+    ctx.state.post = post;
+    return next();
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -101,19 +101,7 @@ export const list = async (ctx) => {
 GET /api/posts/:id
  */
 export const read = async (ctx) => {
-  const { id } = ctx.params;
-  console.log(id);
-  try {
-    const post = await Post.findById(id).exec();
-    console.log(post);
-    if (!post) {
-      ctx.status = 404;
-      return;
-    }
-    ctx.body = post;
-  } catch (e) {
-    ctx.throw(500, e);
-  }
+  ctx.body = ctx.state.post;
 };
 
 /*
