@@ -31,13 +31,11 @@ POST /api/posts
 "tags": ["태그1","태그2"] 
 }
 */
-export const write = async ctx => {
+export const write = async (ctx) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
     body: Joi.string().required(),
-    tags: Joi.array()
-      .items(Joi.string())
-      .required(),
+    tags: Joi.array().items(Joi.string()).required(),
   });
 
   const result = Joi.validate(ctx.request.body, schema);
@@ -65,7 +63,7 @@ export const write = async ctx => {
 /*
 GET /api/posts
 */
-export const list = async ctx => {
+export const list = async (ctx) => {
   const page = parseInt(ctx.query.page || '1', 10);
   if (page < 1) {
     ctx.status = 400;
@@ -88,8 +86,8 @@ export const list = async ctx => {
     const postCount = await Post.countDocuments(query).exec();
     ctx.set('Last-Page', Math.ceil(postCount / 10));
     ctx.body = posts
-      .map(post => post.toJSON())
-      .map(post => ({
+      .map((post) => post.toJSON())
+      .map((post) => ({
         ...post,
         body:
           post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
@@ -102,15 +100,27 @@ export const list = async ctx => {
 /*
 GET /api/posts/:id
  */
-export const read = async ctx => {
-  ctx.body = ctx.state.post;
+export const read = async (ctx) => {
+  const { id } = ctx.params;
+  console.log(id);
+  try {
+    const post = await Post.findById(id).exec();
+    console.log(post);
+    if (!post) {
+      ctx.status = 404;
+      return;
+    }
+    ctx.body = post;
+  } catch (e) {
+    ctx.throw(500, e);
+  }
 };
 
 /*
 DELETE /api/posts/:id
 */
 
-export const remove = async ctx => {
+export const remove = async (ctx) => {
   const { id } = ctx.params;
   try {
     await Post.findByIdAndRemove(id).exec();
@@ -125,7 +135,7 @@ PATCH /api/posts/:id
 {title, body}
 */
 
-export const update = async ctx => {
+export const update = async (ctx) => {
   const { id } = ctx.params;
 
   const schema = Joi.object().keys({
