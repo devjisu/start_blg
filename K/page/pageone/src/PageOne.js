@@ -4,33 +4,47 @@ import styled from 'styled-components';
 import Button from './Button';
 
 const WhiteBoxBlock = styled.div`
+    &,
+    & * {
+    box-sizing: border-box;
+    };
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
-    padding: 2rem;
-    width: 650px;
-    height: 800px;
-    background: ${palette.gray[4]};
-    position:relative;
+    display: flex;
+    flex-flow : column nowrap;
+    background: ${palette.gray[5]};
+    overflow: hidden;
+    border-radius: 25px;
+   
 `;
 
 const PageOneBlock = styled.div`
-    position: absolute;
     background: ${palette.gray[1]};
-    top:10%;
-    width: 550px; 
-    margin: 10px; 
     padding: 10px 20px;
-    align-items: center;
+    min-width: 400px;
+    flex: 1;
+    h3 {
+        color:#B1DB4E;
+    };
+    h2 {
+        color:#4FC9DE;
+    };
+    p {
+        color:#BDBDBD;
+    };
+    
+`;
+
+const PageRowBlock = styled.div`
+    display: flex;
+    flex-flow : row wrap;
+    flex: 1;
 `;
 
 const PageTwoBlock = styled.div`
-    position: absolute;
-    background: ${palette.teal[6]};
-    top:38%;
-    width: 254px;
-    height: 250px;
-    margin: 10px; 
+    background: #4FC9DE;
     padding: 10px 20px;
-    float:left;
+    min-width: 300px;
+    flex:1 1 40%;
     h3 {
         color:white;
     };
@@ -40,18 +54,15 @@ const PageTwoBlock = styled.div`
     p {
         color:white;
     };
+    
 `;
 
+
 const PageThreeBlock = styled.div`
-    position: absolute;
-    background: ${palette.teal[3]};
-    top:38%;
-    left:46%;
-    width: 254px;
-    height: 250px;
-    margin: 10px; 
+    background: #A0D9E2;
     padding: 10px 20px;
-    float:left;
+    min-width: 300px;
+    flex:1 1 40%;
     h3 {
         color:white;
     };
@@ -61,6 +72,7 @@ const PageThreeBlock = styled.div`
     p {
         color:white;
     };
+   
 `;
 
 const PageOne = () => {
@@ -77,27 +89,35 @@ const PageOne = () => {
                     Perfect for any developers who are serious about honing their skills.
                 </p>
             </PageOneBlock>
-            <PageTwoBlock>
-                <h3>Monthly Subscription</h3>
-                <table>
-                    <tr>
-                        <td>
-                            <h1>$29</h1>
-                        </td>
-                        <td>
-                            <p>per month</p>
-                        </td>
-                    </tr>
-                </table>
-                <p>Full access for less than $1 a day</p>
-                <Button>Sign up</Button> 
-            </PageTwoBlock>
-            <PageThreeBlock>
-                <h3>Why us</h3>
-                <p>
-                    어렵다아아아아
-                </p>
-            </PageThreeBlock>
+            <PageRowBlock>
+                <PageTwoBlock>
+                    <h3>Monthly Subscription</h3>
+                    <table>
+                        <tr>
+                            <td>
+                                <h1>$29</h1>
+                            </td>
+                            <td>
+                                <p>per month</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>Full access for less than $1 a day</p>
+                    <Button>Sign up</Button> 
+                </PageTwoBlock>
+                <PageThreeBlock>
+                    <h3>Why us</h3>
+                    <p>
+                        Tutorials by industry experts<br/>
+                        Peer & expert code reviewsCoding exercises<br/>
+                        Access to our GitHub repos
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </p>
+                </PageThreeBlock>
+            </PageRowBlock>
         </WhiteBoxBlock>            
     );
 };
